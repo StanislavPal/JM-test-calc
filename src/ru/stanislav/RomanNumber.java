@@ -15,11 +15,11 @@ public class RomanNumber {
         this.RomanNumbersMap.put("V", 5);
         this.RomanNumbersMap.put("VI", 6);
         this.RomanNumbersMap.put("VII", 7);
-        this.RomanNumbersMap.put("vIII", 8);
+        this.RomanNumbersMap.put("VIII", 8);
         this.RomanNumbersMap.put("IX", 9);
         this.RomanNumbersMap.put("X", 10);
 
-        this.value = value;
+        this.value = value.toUpperCase();
     }
 
     Boolean isRoman() {

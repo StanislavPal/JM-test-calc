@@ -5,35 +5,55 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        boolean bExit = false;
         int a;
         int b;
+        String val1;
+        String val2;
+        String op;
+        String[] splitExpr;
 
-        Scanner reader = new Scanner(System.in);
+        Scanner in = new Scanner(System.in);
 
-        System.out.println("Ввод");
 
-        String expression = reader.nextLine();
-        String[] splitExpression = expression.split(" ");
-        String value1 = splitExpression[0];
-        String value2 = splitExpression[2];
-        String op = splitExpression[1];
+        while (!bExit) {
 
-        RomanNumber romanNumberA = new RomanNumber(value1);
-        RomanNumber romanNumberB = new RomanNumber(value2);
+            System.out.println("Ввод");
+            String expr = in.nextLine();
 
-        //System.out.println("is roman: " + (romanNumberA.isRoman() && romanNumberB.isRoman()));
+            try {
 
-        if (romanNumberA.isRoman() && romanNumberB.isRoman()) {
-            a = romanNumberA.toArabicNumber(value1);
-            b = romanNumberB.toArabicNumber(value2);
-        } else {
-            a = Integer.parseInt(splitExpression[0]);
-            b = Integer.parseInt(splitExpression[2]);
+                splitExpr = expr.split(" ");
+                val1 = splitExpr[0];
+                val2 = splitExpr[2];
+                op = splitExpr[1];
+
+            }
+            catch (Exception ex) {
+                bExit = true;
+                continue;
+            }
+
+            RomanNumber romanNumberA = new RomanNumber(val1);
+            RomanNumber romanNumberB = new RomanNumber(val2);
+
+            //System.out.println("is roman: " + (romanNumberA.isRoman() && romanNumberB.isRoman()));
+
+            if (romanNumberA.isRoman() && romanNumberB.isRoman()) {
+                a = romanNumberA.toArabicNumber(val1);
+                b = romanNumberB.toArabicNumber(val2);
+            } else {
+                a = Integer.parseInt(splitExpr[0]);
+                b = Integer.parseInt(splitExpr[2]);
+            }
+
+            Calc calc = new Calc(a, b, op);
+            float result = calc.calculate();
+
+            System.out.println("Результат: " + result);
+
         }
 
-        Calc calc = new Calc(a, b, op);
-        float result = calc.calculate();
-
-        System.out.println("Результат: " + result);
+        in.close();
     }
 }

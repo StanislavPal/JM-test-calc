@@ -26,7 +26,7 @@ public class Calc {
         }
 
         private float div() {
-            return this.a / this.b;
+            return this.a / (float)this.b;
         }
 
         private int mult() {
