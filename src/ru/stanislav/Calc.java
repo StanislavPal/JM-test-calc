@@ -5,12 +5,6 @@ public class Calc {
         int b;
         String op;
 
-        public Calc(int a, int b, String op) {
-            this.a = a;
-            this.b = b;
-            this.op = op;
-        }
-
         public void set(int a, int b, String op) {
             this.a = a;
             this.b = b;
